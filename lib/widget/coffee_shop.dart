@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myproject/detail_page.dart';
 
 class CoffeeShop extends StatelessWidget {
   final String imagePath;
@@ -29,14 +30,24 @@ class CoffeeShop extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10)),
               elevation: 10,
               child: Column(
-                children: [
-                  SizedBox(
-                    width: double.infinity,
-                    height: 150,
-                    child: Image.asset(
-                      imagePath,
-                      fit: BoxFit.cover,
+                children: <Widget>[
+                  GestureDetector(
+                    child: Container(
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 150,
+                        child: Image.asset(
+                          imagePath,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => DetailPage()));
+                    },
                   )
                 ],
               ),

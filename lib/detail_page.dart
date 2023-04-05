@@ -43,16 +43,21 @@ class _DetailPageState extends State<DetailPage> {
                   Positioned(
                     top: 16,
                     left: 16,
-                    child: Container(
-                      child: Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                      ),
-                      padding: EdgeInsets.all(8),
-                      decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                    ),
+                    child: GestureDetector(
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        child: Container(
+                          child: Icon(
+                            Icons.arrow_back,
+                            color: Colors.white,
+                          ),
+                          padding: EdgeInsets.all(8),
+                          decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
+                        )),
                   ),
                   Positioned(
                     top: 16,
@@ -183,8 +188,8 @@ class _DetailPageState extends State<DetailPage> {
               // Widget Ulasan
               Comment(
                   image:
-                      'https://img2.pngdownload.id/20180713/ig/kisspng-user-profile-linkedin-netwerk-money-order-fulfillm-round-face-5b4944092212b3.5336384915315282011396.jpg',
-                  username: 'Budiana',
+                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsDk8zs7Ssxa3I--LGT223HBG8UICIIxjcVA&usqp=CAU',
+                  username: 'Ayikkk',
                   coment:
                       'Hanya secangkir kopi yang menyajikan rasa manis, bukan janji janji dari bibir yang terlihat manis.'),
 

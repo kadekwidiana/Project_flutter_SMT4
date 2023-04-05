@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-
-import 'home_page.dart';
+import 'package:myproject/home_page.dart';
 
 class LoginGooglePage extends StatelessWidget {
   const LoginGooglePage({super.key});
-
-  get child => null;
 
   @override
   Widget build(BuildContext context) {
@@ -63,23 +60,31 @@ class LoginGooglePage extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                          padding: const EdgeInsets.only(
-                              left: 16, right: 16, bottom: 32),
-                          child: Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(14),
-                              child: ElevatedButton(
-                                child: const Text("Login"),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const HomePage()));
-                                },
-                              ),
+                        padding: const EdgeInsets.only(
+                            left: 16, right: 16, bottom: 32),
+                        child: Card(
+                          child: Padding(
+                            padding: const EdgeInsets.all(14),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                GestureDetector(
+                                  child: Text(
+                                    "Login",
+                                    style: GoogleFonts.montserrat(fontSize: 20),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => HomePage()));
+                                  },
+                                )
+                              ],
                             ),
-                          )),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ))

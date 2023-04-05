@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     image: DecorationImage(
                                         image: NetworkImage(
-                                            "https://www.pngkey.com/png/full/157-1579943_no-profile-picture-round.png")),
+                                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsDk8zs7Ssxa3I--LGT223HBG8UICIIxjcVA&usqp=CAU")),
                                     borderRadius: BorderRadius.circular(25),
                                     border: Border.all(
                                         color: Colors.white,
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                                 "Hallo Widi, Selamat Datang !",
                                 style:
                                     GoogleFonts.montserrat(color: Colors.white),
-                              )
+                              ),
                             ],
                           ),
                           Container(
@@ -111,13 +111,18 @@ class _HomePageState extends State<HomePage> {
             ),
             Padding(
               padding: const EdgeInsets.all(15),
-              child: Row(
-                children: [
-                  Category(imagePath: "assets/coffee-cup.png", title: "Tubruk"),
-                  Category(imagePath: "assets/coffee.png", title: "Latte"),
-                  Category(imagePath: "assets/mesin.png", title: "Espresso"),
-                  Category(imagePath: "assets/biji.png", title: "Biji"),
-                ],
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: Row(
+                  children: [
+                    Category(
+                        imagePath: "assets/coffee-cup.png", title: "Tubruk"),
+                    Category(imagePath: "assets/coffee.png", title: "Latte"),
+                    Category(imagePath: "assets/mesin.png", title: "Espresso"),
+                    Category(imagePath: "assets/biji.png", title: "Biji"),
+                    Category(imagePath: "assets/biji.png", title: "Good"),
+                  ],
+                ),
               ),
             ),
             Padding(
@@ -141,7 +146,7 @@ class _HomePageState extends State<HomePage> {
               jamBuka: "10:30 - 24:00",
             ),
             CoffeeShop(
-              imagePath: "assets/coffee3.jpg",
+              imagePath: "assets/coffee2.jpg",
               nameShop: "Ellago Coffee",
               rating: "4.8",
               jamBuka: "09:30 - 20:00",
