@@ -77,7 +77,7 @@ class _DetailPageState extends State<DetailPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        "Coffee Favorit",
+                        "Kedai Kopi Kenangan",
                         style: GoogleFonts.montserrat(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:myproject/login_google_page.dart';
+import 'package:myproject/profil_page.dart';
 import 'package:myproject/widget/category.dart';
 import 'package:myproject/widget/coffee_shop.dart';
 
@@ -16,6 +18,67 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Hallo Widi, Selamat datang",
+            style: GoogleFonts.montserrat(color: Colors.white)),
+        titleTextStyle: TextStyle(fontSize: 14),
+        backgroundColor: Colors.brown,
+        iconTheme: IconThemeData(color: Colors.white, size: 25),
+        elevation: 0,
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: IconButton(
+              icon: Icon(
+                Icons.notifications_active,
+                color: Colors.white,
+                size: 25,
+              ),
+              onPressed: () {},
+            ),
+          )
+        ],
+      ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: <Widget>[
+            UserAccountsDrawerHeader(
+              decoration: BoxDecoration(color: Colors.brown),
+              accountName: Text('Kadek Widiana'),
+              accountEmail: Text('kadekwidiana296@gmail.com'),
+              currentAccountPicture: CircleAvatar(
+                backgroundImage: AssetImage('assets/widi.png'),
+              ),
+            ),
+            ListTile(
+              title: Text('Profil Detail'),
+              leading: Icon(Icons.person),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => MyProfil()));
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Pengaturan'),
+              leading: Icon(Icons.settings),
+              onTap: () {
+                Navigator.pop(context);
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text('LogOut'),
+              leading: Icon(Icons.exit_to_app),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => LoginGooglePage()));
+              },
+            )
+          ],
+        ),
+      ),
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(items: [
         BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
@@ -30,7 +93,7 @@ class _HomePageState extends State<HomePage> {
             Stack(
               children: [
                 Container(
-                  height: 140,
+                  height: 70,
                   width: double.infinity,
                   color: Colors.brown,
                 ),
@@ -39,47 +102,6 @@ class _HomePageState extends State<HomePage> {
                   children: [
                     SizedBox(
                       height: 10,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(15),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              Container(
-                                alignment: Alignment.topLeft,
-                                height: 45,
-                                width: 45,
-                                decoration: BoxDecoration(
-                                    image: DecorationImage(
-                                        image: NetworkImage(
-                                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsDk8zs7Ssxa3I--LGT223HBG8UICIIxjcVA&usqp=CAU")),
-                                    borderRadius: BorderRadius.circular(25),
-                                    border: Border.all(
-                                        color: Colors.white,
-                                        style: BorderStyle.solid,
-                                        width: 2)),
-                              ),
-                              SizedBox(
-                                width: 10,
-                              ),
-                              Text(
-                                "Hallo Widi, Selamat Datang !",
-                                style:
-                                    GoogleFonts.montserrat(color: Colors.white),
-                              ),
-                            ],
-                          ),
-                          Container(
-                              alignment: Alignment.topRight,
-                              child: Icon(
-                                Icons.notifications_active,
-                                color: Colors.white,
-                                size: 30,
-                              )),
-                        ],
-                      ),
                     ),
                     SizedBox(
                       height: 15,
