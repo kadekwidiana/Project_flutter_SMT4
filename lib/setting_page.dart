@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 
-class MyProfil extends StatelessWidget {
-  const MyProfil({super.key});
+class SettingPage extends StatelessWidget {
+  const SettingPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,11 +29,11 @@ class MyProfil extends StatelessWidget {
             label: "Profil"),
       ]),
       appBar: AppBar(
-        title: Text("Profil Saya"),
+        title: Text("Pengaturan"),
         backgroundColor: Colors.brown,
       ),
       body: Center(
-        child: Text("Ini Adalah halaman profil"),
+        child: Text("Ini Adalah halaman pengaturan"),
       ),
     );
   }

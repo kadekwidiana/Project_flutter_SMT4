@@ -19,9 +19,24 @@ class _DetailPageState extends State<DetailPage> {
       // backgroundColor: Colors.grey,
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: "Tersimpan"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.brown,
+            ),
+            label: "Home"),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.bookmark,
+              color: Colors.brown,
+            ),
+            label: "Tersimpan"),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.brown,
+            ),
+            label: "Profil"),
       ]),
       body: SingleChildScrollView(
         child: SafeArea(

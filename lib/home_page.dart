@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myproject/login_google_page.dart';
 import 'package:myproject/profil_page.dart';
+import 'package:myproject/setting_page.dart';
 import 'package:myproject/widget/category.dart';
 import 'package:myproject/widget/coffee_shop.dart';
 
@@ -64,7 +65,8 @@ class _HomePageState extends State<HomePage> {
               title: Text('Pengaturan'),
               leading: Icon(Icons.settings),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SettingPage()));
               },
             ),
             Divider(),
@@ -81,9 +83,24 @@ class _HomePageState extends State<HomePage> {
       ),
       backgroundColor: Colors.white,
       bottomNavigationBar: BottomNavigationBar(items: [
-        BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
-        BottomNavigationBarItem(icon: Icon(Icons.bookmark), label: "Tersimpan"),
-        BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profil"),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.home,
+              color: Colors.brown,
+            ),
+            label: "Home"),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.bookmark,
+              color: Colors.brown,
+            ),
+            label: "Tersimpan"),
+        BottomNavigationBarItem(
+            icon: Icon(
+              Icons.person,
+              color: Colors.brown,
+            ),
+            label: "Profil"),
       ]),
       body: SingleChildScrollView(
         child: SafeArea(
