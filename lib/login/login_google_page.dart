@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myproject/home_page.dart';
+// import 'package:myproject/beranda/home_page.dart';
+import 'package:myproject/navbar/navbar.dart';
 
 class LoginGooglePage extends StatelessWidget {
   const LoginGooglePage({super.key});
@@ -68,18 +69,17 @@ class LoginGooglePage extends StatelessWidget {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: <Widget>[
-                                GestureDetector(
-                                  child: Text(
-                                    "Login",
-                                    style: GoogleFonts.montserrat(fontSize: 20),
-                                  ),
-                                  onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => HomePage()));
-                                  },
-                                )
+                                ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  MyNavbar()));
+                                    },
+                                    child: Text(
+                                      'Login',
+                                    ))
                               ],
                             ),
                           ),

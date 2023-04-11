@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myproject/detail_page.dart';
+import 'package:myproject/detail/detail_page.dart';
 
 class CoffeeShop extends StatelessWidget {
   final String imagePath;
