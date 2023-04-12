@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:myproject/login/login_google_page.dart';
+// import 'package:myproject/login/login_google_page.dart';
+import 'package:myproject/login/login_page.dart';
 // import 'detail_page.dart';
 // import 'home_page.dart';
 // import 'login_google_page.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginGooglePage(),
+      home: LoginPage(),
       theme:
           ThemeData(brightness: Brightness.light, primarySwatch: Colors.amber),
     );

@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:myproject/login/forgotpassword_page.dart';
-import 'package:myproject/login/signup_page.dart';
-import 'package:myproject/navbar/navbar.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
+import 'package:myproject/login/login_page.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUpPage extends StatefulWidget {
+  const SignUpPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUpPage> createState() => _SignUpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
-  bool isRememberMe = false;
-
+class _SignUpPageState extends State<SignUpPage> {
   Widget buildEmail() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -49,6 +45,46 @@ class _LoginPageState extends State<LoginPage> {
                   color: Color(0xff8c5831),
                 ),
                 hintText: 'Email',
+                hintStyle: TextStyle(color: Colors.black38)),
+          ),
+        )
+      ],
+    );
+  }
+
+  Widget buildPhoneNumber() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'No Telepon',
+          style: TextStyle(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+              ]),
+          height: 60,
+          child: TextField(
+            keyboardType: TextInputType.emailAddress,
+            style: TextStyle(color: Colors.black87),
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.phone,
+                  color: Color(0xff8c5831),
+                ),
+                hintText: 'No Telepon',
                 hintStyle: TextStyle(color: Colors.black38)),
           ),
         )
@@ -96,48 +132,47 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget buildForgotPassBtn() {
-    return Container(
-      alignment: Alignment.centerRight,
-      child: TextButton(
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => ForgotPasswordPage()));
-          },
-          child: Text(
-            'Lupa Kata Sandi?',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          )),
+  Widget buildRepeatPassword() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Text(
+          'Masukan Ulang Kata Sandi',
+          style: TextStyle(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Container(
+          alignment: Alignment.centerLeft,
+          decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(10),
+              boxShadow: [
+                BoxShadow(
+                    color: Colors.black26, blurRadius: 6, offset: Offset(0, 2))
+              ]),
+          height: 60,
+          child: TextField(
+            obscureText: true,
+            style: TextStyle(color: Colors.black87),
+            decoration: InputDecoration(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(top: 14),
+                prefixIcon: Icon(
+                  Icons.lock,
+                  color: Color(0xff8c5831),
+                ),
+                hintText: 'Kata Sandi',
+                hintStyle: TextStyle(color: Colors.black38)),
+          ),
+        )
+      ],
     );
   }
 
-  Widget buildRememberCb() {
-    return Container(
-      height: 20,
-      child: Row(
-        children: <Widget>[
-          Theme(
-              data: ThemeData(unselectedWidgetColor: Colors.white),
-              child: Checkbox(
-                value: isRememberMe,
-                checkColor: Colors.green,
-                activeColor: Colors.white,
-                onChanged: ((value) {
-                  setState(() {
-                    isRememberMe = value!;
-                  });
-                }),
-              )),
-          Text(
-            'Ingat saya',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
-          )
-        ],
-      ),
-    );
-  }
-
-  Widget buildLoginBtn() {
+  Widget buildSignUpBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25),
       width: double.infinity,
@@ -146,10 +181,10 @@ class _LoginPageState extends State<LoginPage> {
         child: ElevatedButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => MyNavbar()));
+                context, MaterialPageRoute(builder: (context) => LoginPage()));
           },
           child: Text(
-            'LOGIN',
+            'DAFTAR',
             style: TextStyle(
                 color: Color(0xff8c5831),
                 fontSize: 20,
@@ -165,19 +200,19 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Widget buildSignupBtn() {
+  Widget buildSignInBtn() {
     return GestureDetector(
       onTap: () {
         Navigator.push(
-            context, MaterialPageRoute(builder: (context) => SignUpPage()));
+            context, MaterialPageRoute(builder: (context) => LoginPage()));
       },
       child: RichText(
           text: TextSpan(children: [
         TextSpan(
-            text: 'Belum punya akun? ',
+            text: 'Sudah punya akun? ',
             style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500)),
         TextSpan(
-            text: 'Daftar',
+            text: 'Login',
             style: TextStyle(
                 color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold))
       ])),
@@ -208,7 +243,7 @@ class _LoginPageState extends State<LoginPage> {
                     ])),
                 child: SingleChildScrollView(
                   physics: AlwaysScrollableScrollPhysics(),
-                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 80),
+                  padding: EdgeInsets.symmetric(horizontal: 25, vertical: 60),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
@@ -223,24 +258,30 @@ class _LoginPageState extends State<LoginPage> {
                         height: 8,
                       ),
                       Text(
-                        'Login',
+                        'Daftar',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 40,
                             fontWeight: FontWeight.bold),
                       ),
                       SizedBox(
-                        height: 50,
+                        height: 40,
                       ),
                       buildEmail(),
                       SizedBox(
                         height: 20,
                       ),
+                      buildPhoneNumber(),
+                      SizedBox(
+                        height: 20,
+                      ),
                       buildPassword(),
-                      buildForgotPassBtn(),
-                      buildRememberCb(),
-                      buildLoginBtn(),
-                      buildSignupBtn()
+                      SizedBox(
+                        height: 20,
+                      ),
+                      buildRepeatPassword(),
+                      buildSignUpBtn(),
+                      buildSignInBtn()
                     ],
                   ),
                 ),

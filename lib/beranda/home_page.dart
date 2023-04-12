@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:myproject/login/login_google_page.dart';
+import 'package:myproject/login/login_page.dart';
 import 'package:myproject/profil/profil_page.dart';
 import 'package:myproject/settingf/setting_page.dart';
 import 'package:myproject/widget/category.dart';
@@ -77,7 +78,7 @@ class _HomePageState extends State<HomePage> {
               leading: Icon(Icons.exit_to_app),
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => LoginGooglePage()));
+                    MaterialPageRoute(builder: (context) => LoginPage()));
               },
             )
           ],
