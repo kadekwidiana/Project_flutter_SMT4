@@ -2,12 +2,15 @@ import 'package:flutter/material.dart';
 // import 'package:flutter/src/widgets/framework.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:myproject/login/login_google_page.dart';
+// import 'package:myproject/login/login_google_page.dart';
 import 'package:myproject/login/login_page.dart';
 import 'package:myproject/profil/profil_page.dart';
 import 'package:myproject/settingf/setting_page.dart';
 import 'package:myproject/widget/category.dart';
 import 'package:myproject/widget/coffee_shop.dart';
+
+// import '../ProdukPage/products.dart';
+import '../sqllite/ProdukPage/products.dart';
 
 // import 'login_page.dart';
 
@@ -70,6 +73,15 @@ class _HomePageState extends State<HomePage> {
               onTap: () {
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => SettingPage()));
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Halaman Produk'),
+              leading: Icon(Icons.production_quantity_limits),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ProductPage()));
               },
             ),
             Divider(),

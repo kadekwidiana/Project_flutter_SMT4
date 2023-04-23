@@ -18,26 +18,6 @@ class _DetailPageState extends State<DetailPage> {
     return Scaffold(
       // backgroundColor: Colors.grey,
       backgroundColor: Colors.white,
-      // bottomNavigationBar: BottomNavigationBar(items: [
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.home,
-      //         color: Colors.brown,
-      //       ),
-      //       label: "Home"),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.bookmark,
-      //         color: Colors.brown,
-      //       ),
-      //       label: "Tersimpan"),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.person,
-      //         color: Colors.brown,
-      //       ),
-      //       label: "Profil"),
-      // ]),
       body: SingleChildScrollView(
         child: SafeArea(
           child: Column(
