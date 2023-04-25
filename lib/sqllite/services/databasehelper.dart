@@ -1,7 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 
-// ignore: depend_on_referenced_packages
+// ignore: depend_on_referenced_packages 
 import 'package:path/path.dart';
 
 import '../models/product.dart';
@@ -25,8 +25,9 @@ class DatabaseHelper {
           """
             CREATE TABLE products (
               id INTEGER PRIMARY KEY AUTOINCREMENT,              
-              name TEXT NOT NULL,
-              code TEXT NOT NULL, 
+              title TEXT NOT NULL,
+              image TEXT NOT NULL,
+              rating TEXT NOT NULL, 
               category TEXT NOT NULL, 
               description TEXT NOT NULL
             )

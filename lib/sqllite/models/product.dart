@@ -1,29 +1,33 @@
 class Product {
   int? id;
-  String name;
-  String code;
+  String title;
+  String image;
+  String rating;
   String category;
   String description;
 
   Product(
       {this.id,
-      required this.name,
-      required this.code,
+      required this.title,
+      required this.image,
+      required this.rating,
       required this.category,
       required this.description});
 
   Product.fromMap(Map<String, dynamic> res)
-      : id = res["id"],
-        name = res["name"],
-        code = res["code"],
+      : id = res["id"], 
+        title = res["title"],
+        image = res["image"],
+        rating = res["rating"],
         category = res["category"],
         description = res["description"];
 
   Map<String, Object?> toMap() {
     return {
       'id': id,
-      'name': name,
-      'code': code,
+      'title': title, 
+      'image': image, 
+      'rating': rating,
       'category': category,
       'description': description
     };

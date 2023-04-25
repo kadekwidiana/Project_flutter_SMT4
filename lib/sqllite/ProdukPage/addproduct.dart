@@ -19,24 +19,27 @@ class _ProductAddState extends State<ProductAdd> {
   final Product _product;
   _ProductAddState(this._product);
   late final nameController = TextEditingController();
+  final imageController = TextEditingController();
   final codeController = TextEditingController();
   final descriptionController = TextEditingController();
   bool isEditing = false;
   DatabaseHelper dbHelper = DatabaseHelper();
   Future<void> addOrEditUser() async {
     String desc = descriptionController.text;
-    String name = nameController.text;
-    String code = codeController.text;
+    String title = nameController.text;
+    String image = imageController.text;
+    String rating = codeController.text;
 
     if (!isEditing) {
-      Product product =
-          new Product(name: name, code: code, description: desc, category: '');
+      Product product = new Product(
+          title: title, image: image, rating: rating, description: desc, category: '');
       //await addProduct(product);
       await dbHelper.insertProduct(product);
     } else {
       _product.description = desc;
-      _product.code = code;
-      _product.name = name;
+      _product.rating = rating;
+      _product.title = title;
+      _product.image = image;
       _product.category = '';
       //await updateProduct(_product);
       await dbHelper.updateProduct(_product);
@@ -67,8 +70,9 @@ class _ProductAddState extends State<ProductAdd> {
   }
 
   Widget build(BuildContext context) {
-    nameController.text = widget._product.name;
-    codeController.text = widget._product.code;
+    nameController.text = widget._product.title;
+    nameController.text = widget._product.image;
+    codeController.text = widget._product.rating;
     descriptionController.text = widget._product.description;
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -89,8 +93,14 @@ class _ProductAddState extends State<ProductAdd> {
                           TextFormField(
                             controller: nameController,
                             decoration: const InputDecoration(
-                                hintText: 'Enter Product name',
-                                labelText: 'Name'),
+                                hintText: 'Enter Product title',
+                                labelText: 'Title'),
+                          ),
+                          TextFormField(
+                            controller: imageController,
+                            decoration: const InputDecoration(
+                                hintText: 'Masukan alamat gambar',
+                                labelText: 'Image'),
                           ),
                           TextFormField(
                             controller: codeController,
@@ -100,7 +110,7 @@ class _ProductAddState extends State<ProductAdd> {
                             ],
                             decoration: const InputDecoration(
                                 hintText: 'Enter Product Code',
-                                labelText: 'Code'),
+                                labelText: 'Rating'),
                           ),
                           TextFormField(
                             controller: descriptionController,

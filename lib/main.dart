@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
       theme:
-          ThemeData(brightness: Brightness.light, primarySwatch: Colors.amber),
+          ThemeData(brightness: Brightness.light, primarySwatch: Colors.brown),
     );
   }
 }

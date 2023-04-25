@@ -4,8 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:flutter/src/widgets/placeholder.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
-
   @override
   State<DetailPage> createState() => _DetailPageState();
 }
@@ -72,7 +70,7 @@ class _DetailPageState extends State<DetailPage> {
                     child: Padding(
                       padding: const EdgeInsets.all(16),
                       child: Text(
-                        "Kedai Kopi Kenangan",
+                        "Kopi Kintamani",
                         style: GoogleFonts.montserrat(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
@@ -158,18 +156,11 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
 
-              //Alamat
-              TitleDetail(
-                title: "Alamat :",
-                detail: "Jalan Ahmad Yani No. 10 \nSingaraja, Bali",
-              ),
-
               //Deskripsi
               TitleDetail(
                   title: "Deskripsi :",
                   detail:
-                      "Kopi adalah minuman hasil seduhan biji kopi yang telah disangrai dan dihaluskan menjadi bubuk. Kopi merupakan salah satu komoditas di dunia yang dibudidayakan lebih dari 50 negara. Dua spesies pohon kopi yang dikenal secara umum yaitu Kopi Robusta (Coffea canephora) dan Kopi Arabika (Coffea arabica)."),
-
+                      "Kopi Kintamani ditanam di ketinggian 900-1000 mdpl di dekat Gunung Batur. Seperti yang sudah dibahas, cita rasa serta aroma dari Kopi Kintamani ini cenderung terasa citrusy. Salah satu penyebabnya adalah proses penanamannya yang unik dan tidak biasa. Perkebunan Kopi Kintamani ini biasanya juga menjadi lahan perkebunan jeruk atau sayuran lainnya. Berkat inilah aroma kopinya terasa seperti buah jeruk. Tentunya aroma dan cita rasa citrusy ini berasal dari cara penanaman tradisional tanpa proses chemical."),
               // Title Ulasan
               Padding(
                 padding: const EdgeInsets.all(16),

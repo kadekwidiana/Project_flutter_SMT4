@@ -7,21 +7,41 @@ import 'package:myproject/login/login_page.dart';
 import 'package:myproject/profil/profil_page.dart';
 import 'package:myproject/settingf/setting_page.dart';
 import 'package:myproject/widget/category.dart';
-import 'package:myproject/widget/coffee_shop.dart';
 
 // import '../ProdukPage/products.dart';
+import '../admin/DataPage.dart';
+import '../admin/newpage.dart';
+import '../detail/detail_page.dart';
 import '../sqllite/ProdukPage/products.dart';
-
-// import 'login_page.dart';
+import 'package:myproject/admin/database_helper.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  // final List<Cafe> dataCafe;
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
+  // All data
+  List<Map<String, dynamic>> myData = [];
+  final formKey = GlobalKey<FormState>();
+
+  // This function is used to fetch all data from the database
+  void _refreshData() async {
+    final data = await DatabaseHelper.getItems();
+    setState(() {
+      myData = data;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _refreshData(); // Loading the data when the app starts
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,7 +106,25 @@ class _HomePageState extends State<HomePage> {
             ),
             Divider(),
             ListTile(
-              title: Text('LogOut'),
+              title: Text('Data Posts'),
+              leading: Icon(Icons.post_add),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DataPage()));
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text('View post'),
+              leading: Icon(Icons.point_of_sale_outlined),
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => NewPage()));
+              },
+            ),
+            Divider(),
+            ListTile(
+              title: Text('Log-Out'),
               leading: Icon(Icons.exit_to_app),
               onTap: () {
                 Navigator.push(context,
@@ -97,26 +135,6 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       backgroundColor: Colors.white,
-      // bottomNavigationBar: BottomNavigationBar(items: [
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.home,
-      //         color: Colors.brown,
-      //       ),
-      //       label: "Home"),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.bookmark,
-      //         color: Colors.brown,
-      //       ),
-      //       label: "Tersimpan"),
-      //   BottomNavigationBarItem(
-      //       icon: Icon(
-      //         Icons.person,
-      //         color: Colors.brown,
-      //       ),
-      //       label: "Profil"),
-      // ]),
       body: SingleChildScrollView(
         child: SafeArea(
             child: Column(
@@ -187,30 +205,103 @@ class _HomePageState extends State<HomePage> {
                     fontSize: 18, fontWeight: FontWeight.bold),
               ),
             ),
-            CoffeeShop(
-              imagePath: "assets/coffee1.jpg",
-              nameShop: "Kedai Kopi Kenangan",
-              rating: "4.9",
-              jamBuka: "09:00 - 23:00",
-            ),
-            CoffeeShop(
-              imagePath: "assets/coffee2.jpg",
-              nameShop: "Kopi Banyuatis",
-              rating: "4.5",
-              jamBuka: "10:30 - 24:00",
-            ),
-            CoffeeShop(
-              imagePath: "assets/coffee2.jpg",
-              nameShop: "Ellago Coffee",
-              rating: "4.8",
-              jamBuka: "09:30 - 20:00",
-            ),
-            CoffeeShop(
-              imagePath: "assets/motor.jpg",
-              nameShop: "Coffee Senja",
-              rating: "4.3",
-              jamBuka: "15:00 - 21:30",
-            ),
+            SizedBox(
+                width: double.infinity,
+                height: 360,
+                child: ListView.builder(
+                  itemCount: myData.length,
+                  itemBuilder: (context, index) => SizedBox(
+                    width: double.infinity,
+                    height: 240,
+                    child: Stack(
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 15, right: 15, bottom: 5, top: 5),
+                          child: Card(
+                            clipBehavior: Clip.antiAliasWithSaveLayer,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10)),
+                            elevation: 10,
+                            child: Column(
+                              children: <Widget>[
+                                GestureDetector(
+                                  child: Container(
+                                    child: SizedBox(
+                                      width: double.infinity,
+                                      height: 150,
+                                      child: Image.asset(
+                                        myData[index]['image'],
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                DetailPage()));
+                                  },
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          left: 10,
+                          child: SizedBox(
+                            height: 70,
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.only(left: 15, right: 15),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(myData[index]['title'],
+                                      style: GoogleFonts.montserrat(
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.bold)),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Row(
+                                    children: [
+                                      Icon(Icons.star, color: Colors.amber),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(myData[index]['rating'],
+                                          style: GoogleFonts.montserrat(
+                                              fontSize: 12)),
+                                      SizedBox(
+                                        width: 20,
+                                      ),
+                                      Icon(
+                                        Icons.access_time,
+                                        color: Colors.grey,
+                                      ),
+                                      SizedBox(
+                                        width: 5,
+                                      ),
+                                      Text(
+                                        myData[index]['jamBuka'],
+                                        style: GoogleFonts.montserrat(
+                                          fontSize: 12,
+                                        ),
+                                      )
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )),
           ],
         )),
       ),
